@@ -35,34 +35,18 @@
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ex6_polynomial.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/book/chapter4_Variables/ex6_polynomial.cpp">
+      <file leaf-file-name="ex11_sumOfDigits.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/ex11_sumOfDigits.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5116279">
-              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.60465115">
+              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="math.h" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/math.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="259" column="66" selection-start-line="259" selection-start-column="66" selection-end-line="259" selection-end-column="66" />
-              <folding>
-                <marker date="1424883215000" expanded="false" signature="9383:9796" placeholder="..." />
-                <marker date="1424883215000" expanded="false" signature="10627:10645" placeholder="..." />
-                <marker date="1424883215000" expanded="false" signature="10791:10847" placeholder="..." />
-                <marker date="1424883215000" expanded="false" signature="12381:13295" placeholder="..." />
-                <marker date="1424883215000" expanded="false" signature="13535:13563" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -90,9 +74,18 @@
         <option value="$PROJECT_DIR$/book/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/book/chapter4_Variables/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/book/chapter4_Variables/ex4_celsius.c" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/book/chapter4_Variables/ex6_polynomial.c" />
         <option value="$PROJECT_DIR$/book/chapter4_Variables/ex6_polynomial.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter4_Variables/ex7_displaySciNotation.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter4_Variables/ex8_nextLargestEvenMultiple.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter5_Loops/TriangleNumberTable.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter5_Loops/TriangleNumberInput.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter5_Loops/GreatestCommonDivisor.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter5_Loops/ReverseDigits.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter5_Loops/ex2_numbersandSquares.cpp" />
+        <option value="$PROJECT_DIR$/book/chapter5_Loops/ex7_printFormatting.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/book/chapter5_Loops/ex11_sumOfDigits.cpp" />
       </list>
     </option>
   </component>
@@ -162,7 +155,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="chapter4_Variables" />
+              <option name="myItemId" value="chapter5_Loops" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CTutorial" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CTutorial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="book" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -186,7 +193,7 @@
       <recent name="$PROJECT_DIR$/book" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CTutorial -lm">
+  <component name="RunManager" selected="Application.CTutorial">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="CTutorial" TARGET_NAME="CTutorial" CONFIG_NAME="Debug">
       <envs />
       <method />
@@ -204,13 +211,13 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="CTutorial -lm" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="CTutorial" TARGET_NAME="CTutorial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CTutorial" RUN_TARGET_NAME="CTutorial">
+    <configuration default="false" name="CTutorial" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="CTutorial" TARGET_NAME="CTutorial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CTutorial" RUN_TARGET_NAME="CTutorial">
       <envs />
       <method />
     </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
-      <item index="1" class="java.lang.String" itemvalue="Application.CTutorial -lm" />
+      <item index="1" class="java.lang.String" itemvalue="Application.CTutorial" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -299,8 +306,23 @@
           <line>8</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/book/chapter4_Variables/ex8_nextLargestEvenMultiple.cpp</url>
+          <line>23</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/book/chapter5_Loops/TriangleNumberTable.cpp</url>
+          <line>10</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/book/chapter5_Loops/ex7_printFormatting.cpp</url>
+          <line>23</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -616,11 +638,88 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="259" column="66" selection-start-line="259" selection-start-column="66" selection-end-line="259" selection-end-column="66" />
           <folding>
-            <marker date="1424883215000" expanded="false" signature="9383:9796" placeholder="..." />
-            <marker date="1424883215000" expanded="false" signature="10627:10645" placeholder="..." />
-            <marker date="1424883215000" expanded="false" signature="10791:10847" placeholder="..." />
-            <marker date="1424883215000" expanded="false" signature="12381:13295" placeholder="..." />
-            <marker date="1424883215000" expanded="false" signature="13535:13563" placeholder="..." />
+            <marker date="1424883215000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1424883215000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1424883215000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1424883215000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1424883215000" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter4_Variables/ex6_polynomial.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter4_Variables/ex7_displaySciNotation.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter4_Variables/ex8_nextLargestEvenMultiple.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/TriangleNumberInput.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/GreatestCommonDivisor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/ReverseDigits.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/TriangleNumberTable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/ex2_numbersandSquares.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/ex7_printFormatting.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding>
+            <marker date="1442856949220" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1442856949220" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -628,15 +727,15 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/book/chapter4_Variables/ex6_polynomial.cpp">
+    <entry file="file://$PROJECT_DIR$/book/chapter5_Loops/ex11_sumOfDigits.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5116279">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.60465115">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
           <folding />
         </state>
       </provider>

@@ -7,11 +7,9 @@ double polynomial(double x) {
 }
 
 int main() {
-    //printf("print a pow: %f", pow(2.0, 3));
-
-    sin(2);
     double x;
 
+    // use %ldf to represent a double! It is not %d as you might think...
     printf("Enter an x to plug into the polynomial: ");
     scanf("%lf", &x);
 
