@@ -18,6 +18,7 @@ int main(void)
     //double e = 2.71828282828282828;
     //printf("%.6f", e);
 
+
     //converting from int to string
     int anInt = 368;
     char str[15];
