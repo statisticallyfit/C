@@ -2,18 +2,19 @@
 
 int main() {
 
-    int p, d;
     _Bool isPrime;
 
-    for (p = 2; p <= 50; ++p) {
-        isPrime = 1;
+    for (int i = 2; i <= 50; ++i) {
+        isPrime = 1; // value 1 is true, 0 is false
 
-        for (d = 2; d < p; ++d)
-            if (p % d == 0)
+        for (int j = 2; j < i; ++j) {
+            if (i % j == 0) {
                 isPrime = 0;
-
-        if (isPrime != 0)
-            printf("%i ", p);
+            }
+        }
+        if (isPrime) {  // if isPrime != 0
+            printf("%i \n", i);
+        }
     }
     printf("\n");
 
