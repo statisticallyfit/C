@@ -25,41 +25,38 @@ int getNumberOfDigits(int number) {
 /**
  * Splits the number into several digits and returns array
  */
-void splitNumber(int number) {
+void splitNumber(int number, int *digitsOfNumber, int length) {
 
-    int length = getNumberOfDigits(number);
-    int individualDigits[length]; // declare array
+    int index = 0;
 
-    int i = 0;
-
-    // Extracting digits: last digit first, first digit last
+    // Creating digitsOfNumber: last digit first, first digit last
     while (number != 0) {
         int firstDigit = number % 10;
-        individualDigits[i] = firstDigit;
-        i++;
+        digitsOfNumber[index] = firstDigit;
+        index++;
         number /= 10;
     }
 
-    // now reverse the digits in array to match the number
+    // now reverse the digitsOfNumber in array to match the number
     int firstIndex = 0;
     int lastIndex = length - 1;
     while (firstIndex < lastIndex) {
-        int temp = individualDigits[firstIndex];
-        individualDigits[firstIndex] = individualDigits[lastIndex];
-        individualDigits[lastIndex] = temp;
+        int temp = digitsOfNumber[firstIndex];
+        digitsOfNumber[firstIndex] = digitsOfNumber[lastIndex];
+        digitsOfNumber[lastIndex] = temp;
         firstIndex++;
         lastIndex--;
     }
-
-    //return individualDigits;
 }
+
+
 
 /**
  * Converts the int digits in array into string words
  */
-void translateNumber(int digits[]){
+void translateNumber(int digits[], int length){
 
-    for (int i = 0; i < sizeof(digits) / sizeof(int); i++){
+    for (int i = 0; i < length; i++){
         int digit = digits[i];
 
         switch (digit){
@@ -97,12 +94,19 @@ void translateNumber(int digits[]){
     }
 }
 
+
+
 int main() {
 
+    printf("Enter a number: \n");
     int number = readNumber();
 
-    splitNumber(number);
-    translateNumber(array);
+    const int length = getNumberOfDigits(number);
+    int digitsOfNumber[length];
+    splitNumber(number, digitsOfNumber, length);
+    translateNumber(digitsOfNumber, length);
+
+    printf("\n");
 
     return 0;
 }
