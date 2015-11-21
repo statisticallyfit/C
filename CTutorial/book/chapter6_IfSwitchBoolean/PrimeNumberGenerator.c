@@ -6,12 +6,15 @@ int main() {
 
     bool isPrime;
 
-    for (int i = 2; i <= 50; ++i) {
+    printf("2\n"); // 2 is prime
+
+    for (int i = 3; i <= 50; i += 2) {
         isPrime = true; // value 1 is true, 0 is false
 
-        for (int j = 2; j < i; ++j) {
+        for (int j = 3; j < i; j += 2) {
             if (i % j == 0) {
                 isPrime = false;
+                break;
             }
         }
         if (isPrime) {  // if isPrime != 0
