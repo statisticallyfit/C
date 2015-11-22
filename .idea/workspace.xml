@@ -11,9 +11,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7a3bd8-f853-4220-be1a-ece7d6fb8801" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="9a7a3bd8-f853-4220-be1a-ece7d6fb8801" name="Default" comment="" />
     <ignored path="C.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,6 +84,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-115" />
     <option name="width" value="1130" />
     <option name="height" value="785" />
   </component>
@@ -194,6 +193,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/CTutorial" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -242,7 +242,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1130" height="785" extended-state="1" />
+    <frame x="-115" y="0" width="1130" height="785" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23357016" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
