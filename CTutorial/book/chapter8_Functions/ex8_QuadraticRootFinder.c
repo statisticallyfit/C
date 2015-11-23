@@ -47,10 +47,12 @@ void findQuadraticRoots(int a, int b, int c){
 
 
 int main() {
-    int a, b, c;
+    int a = 0, b = 0, c = 0;
 
     printf("Enter a, b, c: ");
-    scanf("%i %i %i\n", &a, &b, &c);
+    scanf("%i %i %i", &a, &b, &c);
 
     findQuadraticRoots(a, b, c);
+
+    return 0;
 }
