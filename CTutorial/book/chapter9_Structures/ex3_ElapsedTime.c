@@ -25,6 +25,24 @@ struct DateTime {
 
 
 
+//Declare all functions
+bool isLeapYear(struct Date d);
+int getNumDaysInMonth(struct Date d);
+bool isLesserDate(struct Date d1, struct Date d2);
+bool isLesserTime(struct Time t1, struct Time t2);
+bool isLesser(struct DateTime x1, struct DateTime x2);
+long int reduceTimeToSeconds(struct Time t);
+long long int reduceDateToSeconds(struct Date d);
+void displayTime(struct Time t);
+void displayDate(struct Date d);
+void display(struct DateTime dateTime);
+struct Time elapsedTime(struct Time t1, struct Time t2);
+struct DateTime elapsedPeriod(struct DateTime x1, struct DateTime x2);
+bool datesAreEqual(struct Date, struct Date);
+bool timesAreEqual(struct Time, struct Time);
+bool areEqual(struct DateTime, struct DateTime);
+
+
 
 
 /**
@@ -41,7 +59,7 @@ bool isLeapYear(struct Date d) {
  * Finds number of days in a month
  */
 int getNumDaysInMonth(struct Date d){
-    bool isLeapYear(struct Date);
+    //bool isLeapYear(struct Date);
 
     const int dayAtMonthEnd[13] = {0, 31, 28, 31, 30, 31, 30,
                                    31, 31, 30, 31, 30, 31};
@@ -85,7 +103,7 @@ int getNumDaysInMonth(struct Date d){
  * Returns true if d1 < d2, false otherwise
  */
 bool isLesserDate(struct Date d1, struct Date d2) {
-    int reduceDateToSeconds(struct Date);
+    //int reduceDateToSeconds(struct Date);
 
     return reduceDateToSeconds(d1) <
             reduceDateToSeconds(d2);
@@ -98,7 +116,7 @@ bool isLesserDate(struct Date d1, struct Date d2) {
  * Returns true if t1 < t2, false otherwise
  */
 bool isLesserTime(struct Time t1, struct Time t2) {
-    int reduceTimeToSeconds(struct Time);
+    //int reduceTimeToSeconds(struct Time);
 
     return reduceTimeToSeconds(t1) <
            reduceTimeToSeconds(t2);
@@ -111,9 +129,9 @@ bool isLesserTime(struct Time t1, struct Time t2) {
  * Return true if first one is smaller, false if second is smaller
  */
 bool isLesser(struct DateTime x1, struct DateTime x2) {
-    bool datesAreEqual(struct Date, struct Date);
-    bool isLesserTime(struct Time, struct Time);
-    bool isLesserDate(struct Date, struct Date);
+    //bool datesAreEqual(struct Date, struct Date);
+    //bool isLesserTime(struct Time, struct Time);
+    //bool isLesserDate(struct Date, struct Date);
 
     if (datesAreEqual(x1.date, x2.date)){
         return isLesserTime(x1.time, x2.time);
@@ -126,8 +144,8 @@ bool isLesser(struct DateTime x1, struct DateTime x2) {
 /**
  * HELPER of ELAPSED: Gets seconds of the time struct
  */
-int reduceTimeToSeconds(struct Time t) {
-    return t.seconds + t.minutes * 60 + t.hour * 3600;
+long int reduceTimeToSeconds(struct Time t) {
+    return ((long) t.seconds + t.minutes * 60 + t.hour * 3600);
 }
 
 
@@ -138,14 +156,14 @@ int reduceTimeToSeconds(struct Time t) {
  * Converts each component of Date to days, then sums
  * days and converts to seconds
  */
-int reduceDateToSeconds(struct Date d) {
-    bool isLeapYear(struct Date);
-    int getNumDaysInMonth(struct Date);
+long long int reduceDateToSeconds(struct Date d) {
+    //bool isLeapYear(struct Date);
+    //int getNumDaysInMonth(struct Date);
 
-    int daysInYear = (isLeapYear(d)) ? 366 : 365;
+    long long int daysInYear = (isLeapYear(d)) ? 366 : 365;
     daysInYear *= d.year;
-    int daysInMonth = getNumDaysInMonth(d) * d.month;
-    int totalDays = d.day + daysInMonth + daysInYear;
+    long long int daysInMonth = getNumDaysInMonth(d) * d.month;
+    long long int totalDays = d.day + daysInMonth + daysInYear;
     return (totalDays * 24 * 3600); //number of seconds
 }
 
@@ -227,19 +245,19 @@ struct Time elapsedTime(struct Time t1, struct Time t2) {
     struct Time elapsed;
 
     // get individual seconds
-    double s1 = (double) reduceTimeToSeconds(t1);
-    double s2 = (double) reduceTimeToSeconds(t2);
+    long double s1 = (long double) reduceTimeToSeconds(t1);
+    long double s2 = (long double) reduceTimeToSeconds(t2);
 
-    double elapsedSeconds = (s2 > s1) ? s2 - s1 : s1 - s2;
+    long double elapsedSeconds = (s2 > s1) ? s2 - s1 : s1 - s2;
 
     // convert back to hh:mm:ss
 
     // HourMin: separate decimal and change it to minutes
-    double hourMin = elapsedSeconds / 3600;
+    long double hourMin = elapsedSeconds / 3600;
     elapsed.hour = (int) hourMin;
-    double minSec = 60 * (hourMin - (int) hourMin); // get decimal part (min in hour form)
+    long double minSec = 60 * (hourMin - (int) hourMin); // get decimal part (min in hour form)
     elapsed.minutes = (int) minSec;
-    double secMillisec = 60 * (minSec - (int) minSec);
+    long double secMillisec = 60 * (minSec - (int) minSec);
     elapsed.seconds = (int) secMillisec; // millisec are ignored
 
     return elapsed;
@@ -255,11 +273,11 @@ struct Time elapsedTime(struct Time t1, struct Time t2) {
 struct DateTime elapsedPeriod(struct DateTime x1, struct DateTime x2) {
 
     struct DateTime elapsed;
-    int smallerTimeInSeconds = 0;
-    int biggerTimeInSeconds = 0;
+    long int smallerTimeInSeconds = 0;
+    long int biggerTimeInSeconds = 0;
 
-    int s1 = 0;
-    int s2 = 0;
+    long int s1 = 0;
+    long int s2 = 0;
 
     // If periods are not in the same day...
     if (!datesAreEqual(x1.date, x2.date)) {
@@ -273,26 +291,26 @@ struct DateTime elapsedPeriod(struct DateTime x1, struct DateTime x2) {
 
         struct Date smallerDate = (isLesserDate(x1.date, x2.date)) ? x1.date : x2.date;
         struct Date biggerDate = (datesAreEqual(x1.date, smallerDate)) ? x2.date : x1.date;
-        int totalBig = biggerTimeInSeconds + reduceDateToSeconds(biggerDate);
-        int totalSmall = smallerTimeInSeconds + reduceDateToSeconds(smallerDate);
+        long int totalBig = biggerTimeInSeconds + reduceDateToSeconds(biggerDate);
+        long int totalSmall = smallerTimeInSeconds + reduceDateToSeconds(smallerDate);
 
 
         // The Big Moment: find the difference in seconds
-        double elapsedSeconds = (double) (totalBig - totalSmall);
+        long double elapsedSeconds = (long double) (totalBig - totalSmall);
 
 
         // Now going the other way: convert seconds to DateTime
-        double yearMonth = elapsedSeconds / (365 * 24 * 3600);
+        long double yearMonth = elapsedSeconds / (365 * 24 * 3600);
         elapsed.date.year = (int) yearMonth;
-        double monthDay = 12 * (yearMonth - (int) yearMonth);
+        long double monthDay = 12 * (yearMonth - (int) yearMonth);
         elapsed.date.month = (int) monthDay;
-        double dayHour = 30 * (monthDay - (int) monthDay);
+        long double dayHour = 30 * (monthDay - (int) monthDay);
         elapsed.date.day = (int) dayHour;
-        double hourMin = 24 * (dayHour - (int) dayHour);
+        long double hourMin = 24 * (dayHour - (int) dayHour);
         elapsed.time.hour = (int) hourMin;
-        double minSec = 60 * (hourMin - (int) hourMin); // get decimal part (min in hour form)
+        long double minSec = 60 * (hourMin - (int) hourMin); // get decimal part (min in hour form)
         elapsed.time.minutes = (int) minSec;
-        double secMillisec = 60 * (minSec - (int) minSec);
+        long double secMillisec = 60 * (minSec - (int) minSec);
         elapsed.time.seconds = (int) secMillisec; // millisec are ignored
 
 
@@ -326,14 +344,24 @@ int main() {
     struct Time expected2 = {0, 59, 0};
     assert(timesAreEqual(elapsedTime(t3, t4), expected2));
 
-    struct DateTime x = {{2, 11, 2015}, {22, 0, 0}}; //2/11/2015 and 11pm
-    struct DateTime y = {{3, 11, 2015}, {1, 5, 5}}; // 3/11/2015 and 1:0:05am
+    //month/day/year
+    struct DateTime x = {{11, 2, 2015}, {22, 0, 0}}; // 11/2/2015 and 11pm
+    struct DateTime y = {{11, 3, 2015}, {1, 5, 5}}; // 11/3/2015 and 1:0:05am
     //struct DateTime e = {{0, 0, 0}, {3, 5, 5}};
     //assert(areEqual(elapsedPeriod(x, y), e));
 
     printf("\n");
-
     display(elapsedPeriod(x, y));
+
+    struct DateTime x1 = {{11, 2, 2015}, {5, 6, 0}}; //5:06 am
+    struct DateTime y1 = {{11, 2, 2015}, {7, 7, 0}}; //7.07 am
+    struct DateTime x2 = {{11, 2, 2015}, {17, 6, 0}}; // 5:06 pm
+    struct DateTime y2 = {{11, 2, 2015}, {19, 7, 0}}; // 7:07 pm
+
+    printf("\n");
+    display(elapsedPeriod(x1, y1));
+    printf("\n");
+    display(elapsedPeriod(x2, y2));
 
     return 0;
 }
