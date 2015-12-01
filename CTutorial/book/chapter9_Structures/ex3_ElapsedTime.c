@@ -26,22 +26,23 @@ struct DateTime {
 
 
 //Declare all functions
-bool isLeapYear(struct Date d);
-int getNumDaysInMonth(struct Date d);
-bool isLesserDate(struct Date d1, struct Date d2);
-bool isLesserTime(struct Time t1, struct Time t2);
-bool isLesser(struct DateTime x1, struct DateTime x2);
-long int reduceTimeToSeconds(struct Time t);
-long long int reduceDateToSeconds(struct Date d);
-void displayTime(struct Time t);
-void displayDate(struct Date d);
-void display(struct DateTime dateTime);
-struct Time elapsedTime(struct Time t1, struct Time t2);
-struct DateTime elapsedPeriod(struct DateTime x1, struct DateTime x2);
+bool isLeapYear(struct Date);
+int getNumDaysInMonth(struct Date);
+struct Date subtractDates(struct Date, struct Date);
+bool isLesserDate(struct Date, struct Date);
+bool isLesserTime(struct Time, struct Time);
+bool isLesser(struct DateTime, struct DateTime);
+long int reduceTimeToSeconds(struct Time);
+long long int reduceDateToSeconds(struct Date);
+void displayTime(struct Time);
+void displayDate(struct Date);
+void display(struct DateTime);
+struct Time elapsedTime(struct Time, struct Time);
+struct DateTime elapsedPeriod(struct DateTime, struct DateTime);
 bool datesAreEqual(struct Date, struct Date);
 bool timesAreEqual(struct Time, struct Time);
 bool areEqual(struct DateTime, struct DateTime);
-
+long double correctForLeapYear(struct DateTime, struct DateTime, long double);
 
 
 
@@ -95,6 +96,33 @@ int getNumDaysInMonth(struct Date d){
 
     return number;
 }*/
+
+
+
+
+/**
+ * Returns Date object with values diffed
+ */
+struct Date subtractDates(struct Date d1, struct Date d2) {
+    long int s1 = reduceDateToSeconds(d1);
+    long int s2 = reduceDateToSeconds(d2);
+    struct Date small, big, diff;
+
+    if (s1 < s2) {
+        small = d1;
+        big = d2;
+    } else {
+        small = d2;
+        big = d1;
+    }
+
+    diff.month = big.month - small.month;
+    diff.day = big.day - small.day;
+    diff.year = big.year - small.year;
+
+    return diff;
+}
+
 
 
 
@@ -267,64 +295,66 @@ struct Time elapsedTime(struct Time t1, struct Time t2) {
 
 
 /**
+ * Adds 1 to seconds if number of leaps is odd, else nothing
+ */
+long double correctForLeapYear(struct DateTime x1,
+                               struct DateTime x2,
+                               long double seconds){
+    int numLeaps = 0;
+    for (int year = x1.date.year; year <= x2.date.year; year++){
+        struct Date maybeLeap = {0, 0, year};
+        if (isLeapYear(maybeLeap)){
+            numLeaps++;
+        }
+    }
+    if (numLeaps % 2 != 0){
+        seconds += 24 * 3600; //extra seconds in 1 day
+    }
+    return seconds;
+}
+
+
+
+
+
+/**
+ * PRECONDITION: x1 must be less than x2
  * Calculates elapsed time between two Times
  * Returns mm:dd:yy and hh:mm:ss between two DateTime structs
  */
 struct DateTime elapsedPeriod(struct DateTime x1, struct DateTime x2) {
 
     struct DateTime elapsed;
-    long int smallerTimeInSeconds = 0;
-    long int biggerTimeInSeconds = 0;
+    struct Date dateWithSameDay;
+    struct Date diff;
+    long double secondsDiff = 0;
 
-    long int s1 = 0;
-    long int s2 = 0;
+    dateWithSameDay.day = x1.date.day;
+    dateWithSameDay.month = x2.date.month;
+    dateWithSameDay.year = x2.date.year;
 
-    // If periods are not in the same day...
-    if (!datesAreEqual(x1.date, x2.date)) {
+    diff = subtractDates(dateWithSameDay, x1.date);
 
-        s1 = reduceTimeToSeconds(x1.time);
-        s2 = reduceTimeToSeconds(x2.time);
+    secondsDiff = reduceDateToSeconds(diff);
+    secondsDiff += 24 * 3600 * (x2.date.day - x1.date.day);
+    secondsDiff += reduceTimeToSeconds(x2.time);
+    secondsDiff -= reduceTimeToSeconds(x1.time);
 
-        smallerTimeInSeconds = (s1 < s2) ? s1 : s2;
-        biggerTimeInSeconds = (s1 == smallerTimeInSeconds) ? s2 : s1;
-        //biggerTimeInSeconds += 24 * 3600; //create the sandbox
+    secondsDiff = correctForLeapYear(x1, x2, secondsDiff);
 
-        struct Date smallerDate = (isLesserDate(x1.date, x2.date)) ? x1.date : x2.date;
-        struct Date biggerDate = (datesAreEqual(x1.date, smallerDate)) ? x2.date : x1.date;
-        long int totalBig = biggerTimeInSeconds + reduceDateToSeconds(biggerDate);
-        long int totalSmall = smallerTimeInSeconds + reduceDateToSeconds(smallerDate);
-
-
-        // The Big Moment: find the difference in seconds
-        long double elapsedSeconds = (long double) (totalBig - totalSmall);
-
-
-        // Now going the other way: convert seconds to DateTime
-        long double yearMonth = elapsedSeconds / (365 * 24 * 3600);
-        elapsed.date.year = (int) yearMonth;
-        long double monthDay = 12 * (yearMonth - (int) yearMonth);
-        elapsed.date.month = (int) monthDay;
-        long double dayHour = 30 * (monthDay - (int) monthDay);
-        elapsed.date.day = (int) dayHour;
-        long double hourMin = 24 * (dayHour - (int) dayHour);
-        elapsed.time.hour = (int) hourMin;
-        long double minSec = 60 * (hourMin - (int) hourMin); // get decimal part (min in hour form)
-        elapsed.time.minutes = (int) minSec;
-        long double secMillisec = 60 * (minSec - (int) minSec);
-        elapsed.time.seconds = (int) secMillisec; // millisec are ignored
-
-
-    } else {
-
-        //normal time differencing
-        struct Time timeElapsed = elapsedTime(x1.time, x2.time);
-        elapsed.date.year = 0;
-        elapsed.date.month = 0;
-        elapsed.date.day = 0;
-        elapsed.time.hour = timeElapsed.hour;
-        elapsed.time.minutes = timeElapsed.minutes;
-        elapsed.time.seconds = timeElapsed.seconds;
-    }
+    // Now going the other way: convert seconds to DateTime
+    long double yearMonth = secondsDiff / (365 * 24 * 3600);
+    elapsed.date.year = (int) yearMonth;
+    long double monthDay = 12 * (yearMonth - (int) yearMonth);
+    elapsed.date.month = (int) monthDay;
+    long double dayHour = 30 * (monthDay - (int) monthDay);
+    elapsed.date.day = (int) dayHour;
+    long double hourMin = 24 * (dayHour - (int) dayHour);
+    elapsed.time.hour = (int) hourMin;
+    long double minSec = 60 * (hourMin - (int) hourMin); // get decimal part (min in hour form)
+    elapsed.time.minutes = (int) minSec;
+    long double secMillisec = 60 * (minSec - (int) minSec);
+    elapsed.time.seconds = (int) secMillisec; // millisec are ignored
 
     return elapsed;
 }
