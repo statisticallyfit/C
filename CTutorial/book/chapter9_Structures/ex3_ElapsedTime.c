@@ -1,4 +1,5 @@
 #include <stdio.h>
+//#include <qfloat.h>
 #include <math.h>
 #include <assert.h>
 #include <stdbool.h>
@@ -343,13 +344,13 @@ struct DateTime elapsedPeriod(struct DateTime x1, struct DateTime x2) {
     secondsDiff = correctForLeapYear(x1, x2, secondsDiff);
 
     // Now going the other way: convert seconds to DateTime
-    long double yearMonth = secondsDiff / (365 * 24 * 3600);
+    /*long double yearMonth = secondsDiff / (365 * 24 * 3600);
     elapsed.date.year = (int) yearMonth;
     long double monthDay = 12 * (yearMonth - (int) yearMonth);
     elapsed.date.month = (int) monthDay;
     long double dayHour = 30 * (monthDay - (int) monthDay);
-    elapsed.date.day = (int) dayHour;
-    long double hourMin = 24 * (dayHour - (int) dayHour);
+    elapsed.date.day = (int) dayHour;*/
+    long double hourMin = secondsDiff / 3600; //24 * (dayHour - (int) dayHour);
     elapsed.time.hour = (int) hourMin;
     long double minSec = 60 * (hourMin - (int) hourMin); // get decimal part (min in hour form)
     elapsed.time.minutes = (int) minSec;
