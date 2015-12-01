@@ -1,5 +1,4 @@
 #include <stdio.h>
-//#include <qfloat.h>
 #include <math.h>
 #include <assert.h>
 #include <stdbool.h>
@@ -75,7 +74,7 @@ int getNumDaysInMonth(struct Date d){
 /**
  * Converts string to integer
  */
-/*int toString(char string[]) {
+/*int toInteger(char string[]) {
     int sign = 0;
     int offset = 0;
     int number = 0;
