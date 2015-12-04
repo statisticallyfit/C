@@ -13,7 +13,6 @@ struct Time {
 /**
  * Updates time by one second
  */
-
 struct Time timeUpdate(struct Time now) {
     now.seconds++;
 
