@@ -1,17 +1,23 @@
 #include <stdio.h>
 
 
-void concat(char result[], const char str1[], int n1,
-            const char str2[], int n2) {
+void concat(char result[], const char str1[], const char str2[]) {
+
+    int lastIndex = 0;
 
     // copy str1 to result
-    for (int i = 0; i < n1; ++i){
+    for (int i = 0; str1[i] != '\0'; ++i){
         result[i] = str1[i];
+        lastIndex = i;
     }
 
-    for (int i = 0; i < n2; ++i){
-        result[n1 + i] = str2[i];
+    for (int i = 0; str2[i] != '\0'; ++i){
+        result[lastIndex] = str2[i];
+        lastIndex++;
     }
+    // no need to increment lastIndex once out of loop
+    // since the != \0 means get right to its location
+    result[lastIndex] = '\0';
 }
 
 
@@ -19,12 +25,12 @@ int main() {
 
     const char s1[5] = {'T', 'e', 's', 't', ' '};
     const char s2[6] = {'w', 'o', 'r', 'k', 's', '.'};
-    char s3[11];
+    char result[11];
 
-    concat(s3, s1, 5, s2, 6);
+    concat(result, s1, s2);
 
     for (int i = 0; i < 11; ++i){
-        printf("%c", s3[i]);
+        printf("%c", result[i]);
     }
 
     printf("\n");
