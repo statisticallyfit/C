@@ -27,7 +27,7 @@ bool isAlphabetic(const char c) {
 
 
 
-int countWords (const char string[]){
+int countLineWords(const char *const string){
 
     int wordCount = 0;
     bool lookingForWord = true;
@@ -56,7 +56,7 @@ int main() {
     printf("Enter a text:\n");
     readLine(input);
 
-    printf("Number of words: %i", countWords(input));
+    printf("Number of words: %i", countLineWords(input));
 
     return 0;
 }

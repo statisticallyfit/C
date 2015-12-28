@@ -27,14 +27,14 @@ bool isAlphabetic(const char c) {
 
 
 
-int countWords (const char string[]){
+int countLineWords(const char line[]){
 
     int wordCount = 0;
     bool lookingForWord = true;
 
-    for (int i = 0; string[i] != '\0'; i++)
+    for (int i = 0; line[i] != '\0'; i++)
     {
-        if (isAlphabetic(string[i]))
+        if (isAlphabetic(line[i]))
         {
             if (lookingForWord){
                 wordCount++;
@@ -49,8 +49,22 @@ int countWords (const char string[]){
 
 
 
-int countTextWords (const char text[]) {
+int countTextWords (char text[]) {
 
+    int totalWords = 0;
+    bool endOfText = false;
+
+    while (!endOfText) {
+
+        readLine(text);
+
+        if (text[0] == '\0'){
+            endOfText = true;
+        } else {
+            totalWords += countLineWords(text);
+        }
+    }
+    return totalWords;
 }
 
 
@@ -58,4 +72,12 @@ int countTextWords (const char text[]) {
 int main() {
 
 
+    char text[81];
+
+    printf("Type in text:\n");
+    printf("When done, press 'ENTER'.\n\n");
+
+    printf("\nThere are %i total words in the above text.\n", countTextWords(text));
+
+    return 0;
 }
