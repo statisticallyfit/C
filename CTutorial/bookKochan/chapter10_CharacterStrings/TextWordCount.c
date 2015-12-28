@@ -71,7 +71,6 @@ int countTextWords (char text[]) {
 
 int main() {
 
-
     char text[81];
 
     printf("Type in text:\n");
