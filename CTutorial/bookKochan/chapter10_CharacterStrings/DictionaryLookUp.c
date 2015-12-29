@@ -23,19 +23,57 @@ bool equalStrings(const char s1[], const char s2[]) {
 }
 
 
+/** Returns -1 if first word is before the second
+ * Returns 1 if first word is after second
+ * Returns 0 if they are the same
+ */
+int compareStrings (const char s1[], const char s2[]){
+
+    int i = 0, answer;
+
+    while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0'){
+        i++;
+    }
+
+    if (s1[i] < s2[i]){
+        answer = -1;
+    } else if (s1[i] > s2[i]){
+        answer = 1;
+    } else {
+        answer = 0;
+    }
+
+    return answer;
+}
+
+
+
 /**
  * Function to lookup word inside dictionary
+ * Implements binary search
  */
 int lookUp(const struct Entry dictionary[],
            const char wordToSearch[],
            const int numberOfEntries){
 
-    for (int i = 0; i < numberOfEntries; i++){
-        if (equalStrings(wordToSearch, dictionary[i].word)){
-            return i;
+    int low = 0;
+    int high = numberOfEntries - 1;
+    int mid, result;
+
+    while (low <= high) {
+        mid = (low + high) / 2;
+        result = compareStrings(dictionary[mid].word, wordToSearch);
+
+        if (result == -1){
+            low = mid + 1;
+        } else if (result == 1){
+            high = mid - 1;
+        } else {
+            return mid;
         }
     }
-    return -1; //wordToSearch not found in dictionary
+
+    return -1;
 }
 
 
