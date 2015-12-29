@@ -15,5 +15,13 @@ int main() {
 
     printf("\'Hello,\' he said, again\? \n\n");
 
+
+
+    printf("How to separate long char strings: \n");
+    char letters[] = "abcdefghijklmnopqrstuvwxyz"
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    printf("%s", letters);
+
     return 0;
 }
