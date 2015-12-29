@@ -48,7 +48,7 @@
       <file leaf-file-name="StringToInteger.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bookKochan/chapter10_CharacterStrings/StringToInteger.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55401665">
+            <state vertical-scroll-proportion="0.33240998">
               <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
               <folding />
             </state>
@@ -186,7 +186,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CPlusPlus" />
@@ -760,7 +760,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bookKochan/chapter10_CharacterStrings/StringToInteger.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55401665">
+        <state vertical-scroll-proportion="0.33240998">
           <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
           <folding />
         </state>
