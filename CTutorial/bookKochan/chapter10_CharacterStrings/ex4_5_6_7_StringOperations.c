@@ -110,7 +110,7 @@ void removeString (char textString[],
  */
 void insertString (char textString[], char putString[], int pos)
 {
-    if (pos >= 0 && pos < length(textString))
+    if (pos >= 0 && pos <= length(textString))
     {
         int lastIndex = length(textString) - 1;
         pos = (pos < 0) ? 0 : pos;
@@ -202,6 +202,8 @@ int main() {
     replaceString(text, "beautiful", "tangy");
     printf("\n%s", text);
     replaceString(text, "blossomed", "thrived");
+    printf("\n%s", text);
+    replaceString(text, "the", "after the thunderstorm, the");
     printf("\n%s", text);
 
 
