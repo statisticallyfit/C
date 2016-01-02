@@ -148,7 +148,9 @@ void insertString (char textString[], char putString[], int pos)
 /**
  * Replaces first occurrence of target with replaceString
  */
-bool replaceString (char sourceString[], char targetString[], char replacerString[])
+bool replaceString (char sourceString[],
+                    char targetString[],
+                    char replacerString[])
 {
     int indexOfTarget = findString(sourceString, targetString);
 
@@ -161,6 +163,22 @@ bool replaceString (char sourceString[], char targetString[], char replacerStrin
         return true;
     }
     return false;
+}
+
+
+
+/**
+ * Replaces multiple occurrences
+ */
+void replaceAll (char sourceString[],
+                  char targetString[],
+                  char replacerString[]) {
+
+    bool stillFound = true;
+
+    do {
+        stillFound = replaceString(sourceString, targetString, replacerString);
+    } while (stillFound);
 }
 
 
@@ -188,6 +206,25 @@ int main() {
     char result[100];
     char text[100];
 
+
+    printf("\nTEST: REPLACE ALL: ");
+    printf("\n\nTest 1:\n");
+    initializeWithValue(text, "***___** * *");
+    replaceAll(text, "*", "+");
+    printf("%s", text);
+
+    printf("\n\nTest 2:\n");
+    initializeWithValue(text, "one and only one in the whole one worldone");
+    replaceAll(text, "one", "1");
+    printf("%s", text);
+
+    printf("\n\nTest 3:\n");
+    initializeWithValue(text, "paris, France is nice in the winter because paris is European");
+    replaceAll(text, "paris", "Paris");
+    printf("%s", text);
+
+    printf("\n\n============================================");
+
     printf("\nTEST: REPLACE STRING: ");
     printf("\n\nTest 1:\n");
     initializeWithValue(text, "the one and only");
@@ -206,6 +243,10 @@ int main() {
     replaceString(text, "the", "after the thunderstorm, the");
     printf("\n%s", text);
 
+    printf("\n\nTest 3:\n");
+    initializeWithValue(text, "the *s are out tonight");
+    replaceString(text, "*", "star");
+    printf("%s", text);
 
     printf("\n\n============================================");
 
