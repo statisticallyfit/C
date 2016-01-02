@@ -97,11 +97,7 @@ void removeString (char textString[],
         textString[startIndex] = textString[i];
         startIndex++;
     }
-    while (startIndex <= lastIndex)
-    {
-        textString[startIndex] = '\0'; // clean up
-        startIndex++;
-    }
+    textString[startIndex] = '\0';
 }
 
 
@@ -119,9 +115,11 @@ void insertString (char textString[], char putString[], int pos)
 
         // rememberString stuff from pos onward
         char rememberString[100];
-        for (int i = pos, j = 0; i <= lastIndex; i++, j++){
+        int j = 0;
+        for (int i = pos; i <= lastIndex; i++, j++){
             rememberString[j] = textString[i];
         }
+        rememberString[j] = '\0';
 
         // putting the string
         for (int i = pos, j = 0; i < length(textString) + length(putString); i++, j++) {
