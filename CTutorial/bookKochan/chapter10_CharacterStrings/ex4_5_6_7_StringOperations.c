@@ -129,8 +129,16 @@ void insertString (char textString[], char putString[], int pos)
         }
 
         // put in the saved bit after
+        int zeroFillStartIndex = 0;
         for (int i = pos + length(putString), j = 0; i < length(textString) + length(putString); i++, j++){
             textString[i] = rememberString[j];
+            zeroFillStartIndex = i;
+        }
+
+        // fill the rest with zeroes \0
+        zeroFillStartIndex++;
+        for (int i = zeroFillStartIndex; i < length(textString); i++){
+            textString[i] = '\0';
         }
     }
 }
