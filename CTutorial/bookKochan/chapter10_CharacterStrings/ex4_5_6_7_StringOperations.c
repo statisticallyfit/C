@@ -51,7 +51,7 @@ void substring (char sourceString[],
 
 
 /**
- * Finds a piece of a string in another string
+ * Finds a piece of a string in another string. Returns its start index
  */
 int findString (char sourceString[], char searchString[]) {
 
@@ -108,27 +108,42 @@ void removeString (char textString[],
 
 /**
  * Inserts bit at position given into text
+ * If pos is out of bounds of textString then do nothing
  */
 void insertString (char textString[], char putString[], int pos)
 {
-    int lastIndex = length(textString) - 1;
-    int startIndex = (pos < 0) ? 0 : pos;
-    int stopIndex = 0;
+    if (pos >= 0 && pos < length(textString))
+    {
+        int lastIndex = length(textString) - 1;
+        pos = (pos < 0) ? 0 : pos;
 
-    // rememberString stuff from pos onward
-    char rememberString[100];
-    for (int i = startIndex, j = 0; i <= lastIndex; i++, j++){
-        rememberString[j] = textString[i];
+        // rememberString stuff from pos onward
+        char rememberString[100];
+        for (int i = pos, j = 0; i <= lastIndex; i++, j++){
+            rememberString[j] = textString[i];
+        }
+
+        // putting the string
+        for (int i = pos, j = 0; i < length(textString) + length(putString); i++, j++) {
+            textString[i] = putString[j];
+        }
+
+        // put in the saved bit after
+        for (int i = pos + length(putString), j = 0; i < length(textString) + length(putString); i++, j++){
+            textString[i] = rememberString[j];
+        }
     }
-
-    // putting the string
-    for (int i = startIndex, j = 0; i < length(textString) + length(putString); i++, j++) {
-        textString[i] = putString[j];
-    }
-
-    // put in the saved bit after
-
 }
+
+
+
+/**
+ * Replaces first occurrence of target with replaceString
+ */
+/*bool replaceString (char sourceString[], char targetString[], char replaceString[])
+{
+
+}*/
 
 
 
@@ -197,7 +212,8 @@ int main() {
     printf("\n\n============================================");
     printf("\nTEST: REMOVE STRING");
     printf("\n\nTest 1:\n");
-    char text[] = "the wrong son";
+    char text[100];
+    initializeWithValue(text, "the wrong son");
     removeString(text, 4, 6);
     printf("%s", text);
 
@@ -220,6 +236,30 @@ int main() {
     initializeWithValue(text, "thewordishere");
     removeString(text, -3, 3); //one more than last index
     printf("%s", text);
+
+
+
+    printf("\n\n============================================");
+    printf("\nTEST: INSERT STRING");
+    printf("\n\nTest 1:\n");
+    initializeWithValue(text, "the wrong son");
+    insertString(text, "per", 10);
+    printf("%s", text);
+
+    printf("\n\nTest 2:\n");
+    initializeWithValue(text, "the wrong son");
+    insertString(text, "per", 20);
+    printf("%s", text);
+
+    printf("\n\nTest 3:\n");
+    initializeWithValue(text, "the one and only");
+    printf("%s", text);
+    removeString(text, 4, 3);
+    printf("\n%s", text);
+    insertString(text, "1", 4);
+    printf("\n%s", text);
+
+    printf("\n\n");
 
     return 0;
 }
