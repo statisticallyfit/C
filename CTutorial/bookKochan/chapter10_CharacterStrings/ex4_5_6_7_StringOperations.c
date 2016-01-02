@@ -44,9 +44,11 @@ void substring (char sourceString[],
         stopIndex = startIndex + numChars - 1;
     }
 
-    for (int i = startIndex; i <= stopIndex; i++) {
+    int i = startIndex;
+    for ( ; i <= stopIndex; i++) {
         resultString[i - startIndex] = sourceString[i];
     }
+    resultString[i - startIndex] = '\0';
 }
 
 
@@ -146,10 +148,20 @@ void insertString (char textString[], char putString[], int pos)
 /**
  * Replaces first occurrence of target with replaceString
  */
-/*bool replaceString (char sourceString[], char targetString[], char replaceString[])
+bool replaceString (char sourceString[], char targetString[], char replacerString[])
 {
+    int indexOfTarget = findString(sourceString, targetString);
 
-}*/
+    if (indexOfTarget != -1) {
+
+        removeString(sourceString, indexOfTarget, length(targetString));
+
+        insertString(sourceString, replacerString, indexOfTarget);
+
+        return true;
+    }
+    return false;
+}
 
 
 
@@ -174,51 +186,50 @@ void initializeWithValue(char string[], char newValue[]) {
 int main() {
 
     char result[100];
+    char text[100];
 
-    initialize(result);
-
-    printf("\nTEST: SUBSTRING:\n");
-    printf("\nTest 1:\n");
-    substring("two words", 4, 20, result);
-    printf("%s", result);
-
-    initialize(result);
+    printf("\nTEST: REPLACE STRING: ");
+    printf("\n\nTest 1:\n");
+    initializeWithValue(text, "the one and only");
+    replaceString(text, "one", "1");
+    printf("%s", text);
 
     printf("\n\nTest 2:\n");
-    substring("character", 4, 3, result);
-    printf("%s", result);
-
-    initialize(result);
-
-    printf("\n\nTest3:\n");
-    substring("pomegranate", 4, 4, result);
-    printf("%s", result);
-
-    initialize(result);
+    initializeWithValue(text, "the beautiful pomegranate orchard blossomed");
+    printf("%s", text);
+    replaceString(text, "pomegranate", "lemon");
+    printf("\n%s", text);
+    replaceString(text, "beautiful", "tangy");
+    printf("\n%s", text);
+    replaceString(text, "blossomed", "thrived");
+    printf("\n%s", text);
 
 
     printf("\n\n============================================");
-    printf("\nTEST: FINDSTRING");
+
+    printf("\nTEST: INSERT STRING");
     printf("\n\nTest 1:\n");
-    printf("index = %i", findString("a chatterbox", "hat"));
+    initializeWithValue(text, "the wrong son");
+    insertString(text, "per", 10);
+    printf("%s", text);
 
     printf("\n\nTest 2:\n");
-    printf("index = %i", findString("a chatterbox", "boring"));
+    initializeWithValue(text, "the wrong son");
+    insertString(text, "per", 20);
+    printf("%s", text);
 
     printf("\n\nTest 3:\n");
-    printf("index = %i", findString("rowing", "arrow"));
-
-    printf("\n\nTest 4:\n");
-    printf("index = %i", findString("a chatterbox", "box"));
-
-    printf("\n\nTest 5:\n");
-    printf("index = %i", findString("inkheart", "ink"));
-
+    initializeWithValue(text, "the one and only");
+    printf("%s", text);
+    removeString(text, 4, 3);
+    printf("\n%s", text);
+    insertString(text, "1", 4);
+    printf("\n%s", text);
 
     printf("\n\n============================================");
+
     printf("\nTEST: REMOVE STRING");
     printf("\n\nTest 1:\n");
-    char text[100];
     initializeWithValue(text, "the wrong son");
     removeString(text, 4, 6);
     printf("%s", text);
@@ -244,26 +255,43 @@ int main() {
     printf("%s", text);
 
 
-
     printf("\n\n============================================");
-    printf("\nTEST: INSERT STRING");
+
+    printf("\nTEST: FINDSTRING");
     printf("\n\nTest 1:\n");
-    initializeWithValue(text, "the wrong son");
-    insertString(text, "per", 10);
-    printf("%s", text);
+    printf("index = %i", findString("a chatterbox", "hat"));
 
     printf("\n\nTest 2:\n");
-    initializeWithValue(text, "the wrong son");
-    insertString(text, "per", 20);
-    printf("%s", text);
+    printf("index = %i", findString("a chatterbox", "boring"));
 
     printf("\n\nTest 3:\n");
-    initializeWithValue(text, "the one and only");
-    printf("%s", text);
-    removeString(text, 4, 3);
-    printf("\n%s", text);
-    insertString(text, "1", 4);
-    printf("\n%s", text);
+    printf("index = %i", findString("rowing", "arrow"));
+
+    printf("\n\nTest 4:\n");
+    printf("index = %i", findString("a chatterbox", "box"));
+
+    printf("\n\nTest 5:\n");
+    printf("index = %i", findString("inkheart", "ink"));
+
+
+    printf("\n\n============================================");
+
+    initialize(result);
+
+    printf("\nTEST: SUBSTRING:\n");
+    printf("\nTest 1:\n");
+    substring("two words", 4, 20, result);
+    printf("%s", result);
+
+    printf("\n\nTest 2:\n");
+    initialize(result);
+    substring("character", 4, 3, result);
+    printf("%s", result);
+
+    printf("\n\nTest3:\n");
+    initialize(result);
+    substring("pomegranate", 4, 2, result);
+    printf("%s", result);
 
     printf("\n\n");
 
