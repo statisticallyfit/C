@@ -77,6 +77,18 @@ int lookUp(const struct Entry dictionary[],
 }
 
 
+
+/**
+ * Sorts the dictionary ascendingly (insertion sort)
+ */
+void dictionarySort (char dict[]) {
+
+
+
+}
+
+
+
 int main(){
 
     //can hold 100 Entries; currently has 10
