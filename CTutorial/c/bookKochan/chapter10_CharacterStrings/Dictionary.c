@@ -71,14 +71,12 @@ void printDictionary (struct Entry dict[], int numEntries)
     char words[numEntries][100]; // set 99 as max word length - a guess (last element is \0)
 
     for (int i = 0; i < numEntries; i++) {
-        //words[i] = dict[i].word;
         strcpy(words[i], dict[i].word);
     }
     int width = 4 + maxWordLength(words, numEntries);
 
     // now print
-    for (int i = 0; i < numEntries; i++)
-    {
+    for (int i = 0; i < numEntries; i++) {
         printf("%s: ", dict[i].word);
         printf("%*s.\n", width, dict[i].definition);
     }
@@ -107,7 +105,21 @@ void dictionarySort (struct Entry dict[], int numEntries)
 }
 
 
+// ===================================================================
 
+void librarian (struct Entry dict[], char word[], int numEntries)
+{
+    printf("Enter word: \n");
+    scanf("%14s", word);
+
+    int entryIndex = lookUp(dict, word, numEntries);
+
+    if (entryIndex != -1){
+        printf("%s\n", dict[entryIndex].definition);
+    } else {
+        printf("Sorry, the word \"%s\" is not in my dictionary.\n", word);
+    }
+}
 
 int main(){
 
@@ -125,28 +137,16 @@ int main(){
                 {"aigrette", "an ornamental cluster of feathers"},
                 {"ajar",     "partially opened"}
             };
-    char word[10]; // to hold a word with 9 letters
-    int numOfEntries = 10;
-    int entryIndex = 0;
-
-    printf("Enter word: \n");
-    scanf("%14s", word);
-
-    entryIndex = lookUp(dictionaryOfEntries, word, numOfEntries);
-
-    if (entryIndex != -1){
-        printf("%s\n", dictionaryOfEntries[entryIndex].definition);
-    } else {
-        printf("Sorry, the word \"%s\" is not in my dictionary.\n", word);
-    }
-
+    int numEntries = 10;
+    //char word[10]; // to hold a word with 9 letters
+    //librarian(dictionaryOfEntries, word, numEntries);
 
 
 
     // Testing =================================================================
 
     printf("\n\n\nTEST: DICTIONARY SORT");
-    printDictionary(dictionaryOfEntries, numOfEntries);
+    printDictionary(dictionaryOfEntries, numEntries);
 
     return 0;
 }
