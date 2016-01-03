@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "../../../include/StringOp.h"
 
 
@@ -47,14 +48,62 @@ int lengthDict (struct Entry dict[]) {
     return (sizeof(dict) / sizeof(dict[0]));
 }
 
-
-
 /**
- * Sorting a list qsort
+ * Returns number of digits of largest word in the list
  */
-void listSort (struct Entry list[]) {
+int maxWordLength(char wordList[], int numWords)
+{
+    int maxLen = 0;
+    for (int i = 0; i < numWords; i++)
+    {
+        int currLen = lengthString(wordList[i]);
+        if (currLen > maxLen){
+            maxLen = currLen;
+        }
+    }
+    return maxLen;
+}
 
-    
+
+void printDictionary (struct Entry dict[], int numEntries)
+{
+    // put words of dict into array then find maxword
+    char words[numEntries][100]; // set 99 as max word length - a guess (last element is \0)
+
+    for (int i = 0; i < numEntries; i++) {
+        //words[i] = dict[i].word;
+        strcpy(words[i], dict[i].word);
+    }
+    int width = 4 + maxWordLength(words, numEntries);
+
+    // now print
+    for (int i = 0; i < numEntries; i++)
+    {
+        printf("%s: ", dict[i].word);
+        printf("%*s.\n", width, dict[i].definition);
+    }
+}
+
+
+
+// ================================================
+
+int comparatorByWord (const void *a,
+                      const void *b)
+{
+    struct Entry *e1 = (struct Entry *) a;
+    struct Entry *e2 = (struct Entry *) b;
+    return compareStrings(e1->word, e2->word);
+}
+
+void dictionarySort (struct Entry dict[], int numEntries)
+{
+    size_t dictLength = sizeof(dict) / sizeof(struct Entry);
+
+    qsort(dict,
+          dictLength,
+          sizeof(struct Entry),
+          comparatorByWord);
 }
 
 
@@ -97,7 +146,7 @@ int main(){
     // Testing =================================================================
 
     printf("\n\n\nTEST: DICTIONARY SORT");
-
+    printDictionary(dictionaryOfEntries, numOfEntries);
 
     return 0;
 }
