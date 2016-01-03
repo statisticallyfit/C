@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include "../../../include/StringOp.h"
+
 
 
 /**
@@ -27,20 +28,6 @@
     return number;
 }*/
 
-
-/**
- * Converts a string to integer
- */
-int toInteger(const char string[]){
-
-    int intValue, result = 0;
-
-    for (int i = 0; string[i] >= '0' && string[i] <= '9'; i++){
-        intValue = string[i] - '0';
-        result = result * 10 + intValue;
-    }
-    return result;
-}
 
 
 

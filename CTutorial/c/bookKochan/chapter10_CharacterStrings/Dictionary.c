@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdbool.h>
+#include "../../../include/StringOp.h"
 
 
 struct Entry{
@@ -7,44 +6,6 @@ struct Entry{
     char definition[50];
 };
 
-
-bool equalStrings(const char s1[], const char s2[]) {
-
-    int i = 0;
-
-    while (s1[i] == s2[i] &&
-           s1[i] != '\0' && s2[i] != '\0'){
-        ++i;
-    }
-
-    if (s1[i] == '\0' && s2[i] == '\0')
-        return true;
-    return false;
-}
-
-
-/** Returns -1 if first word is before the second
- * Returns 1 if first word is after second
- * Returns 0 if they are the same
- */
-int compareStrings (const char s1[], const char s2[]){
-
-    int i = 0, answer;
-
-    while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0'){
-        i++;
-    }
-
-    if (s1[i] < s2[i]){
-        answer = -1;
-    } else if (s1[i] > s2[i]){
-        answer = 1;
-    } else {
-        answer = 0;
-    }
-
-    return answer;
-}
 
 
 
@@ -77,22 +38,32 @@ int lookUp(const struct Entry dictionary[],
 }
 
 
+/**
+ * Finds length of a dictionary
+ * TODO Doesn't work! - returns 0 - why?
+ */
+int lengthDict (struct Entry dict[]) {
+
+    return (sizeof(dict) / sizeof(dict[0]));
+}
+
+
 
 /**
- * Sorts the dictionary ascendingly (insertion sort)
+ * Sorting a list qsort
  */
-void dictionarySort (char dict[]) {
+void listSort (struct Entry list[]) {
 
-
-
+    
 }
+
 
 
 
 int main(){
 
     //can hold 100 Entries; currently has 10
-    const struct Entry dictionaryOfEntries[100] =
+    /*const*/ struct Entry dictionaryOfEntries[100] =
             {
                 {"aardvark", "a burrowing African mammal"},
                 {"abyss",    "a bottomless pit"},
@@ -119,6 +90,14 @@ int main(){
     } else {
         printf("Sorry, the word \"%s\" is not in my dictionary.\n", word);
     }
+
+
+
+
+    // Testing =================================================================
+
+    printf("\n\n\nTEST: DICTIONARY SORT");
+
 
     return 0;
 }
