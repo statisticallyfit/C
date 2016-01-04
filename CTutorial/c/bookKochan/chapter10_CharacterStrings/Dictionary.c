@@ -56,7 +56,9 @@ int maxWordLength(char wordList[], int numWords)
     int maxLen = 0;
     for (int i = 0; i < numWords; i++)
     {
-        int currLen = lengthString(wordList[i]);
+        char aWord[100];
+        strcpy(aWord, wordList[i]);
+        int currLen = lengthString(aWord);
         if (currLen > maxLen){
             maxLen = currLen;
         }

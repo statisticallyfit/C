@@ -48,8 +48,8 @@
       <file leaf-file-name="Dictionary.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/c/bookKochan/chapter10_CharacterStrings/Dictionary.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53588516">
-              <caret line="75" column="20" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.354067">
+              <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -824,8 +824,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/c/bookKochan/chapter10_CharacterStrings/Dictionary.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53588516">
-          <caret line="75" column="20" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.354067">
+          <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
