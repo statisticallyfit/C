@@ -8,6 +8,25 @@
 
 
 
+bool equalStrings       (const char[], const char[]);
+int compareStrings      (const char[], const char[]);
+int lengthString        (const char[]);
+void substring          (const char[], int, int, char[]);
+int findString          (const char[], char[]);
+void removeString       (char[], int, int);
+void insertString       (char[], const char[], int);
+bool replaceString      (char[], const char[], const char[]);
+void replaceAll         (char[], const char[], const char[]);
+void concat             (char[], const char[], const char[]);
+int toInteger           (const char[]);
+void toUppercase        (char[]);
+void toLowercase        (char[]);
+void readLine           (char[]);
+bool isAlphabetic       (const char);
+int countWordsLine      (const char[]);
+int countWordsText      (char[]);   // not const since uses readLine and that arg is not const
+
+
 
 bool equalStrings(const char s1[], const char s2[]) {
 
@@ -49,7 +68,7 @@ int compareStrings (const char s1[], const char s2[]){
 }
 
 
-int lengthString(char string[]){
+int lengthString(const char string[]){
 
     int count = 0;
     for (int i = 0; string[i] != '\0'; i++){
@@ -63,8 +82,9 @@ int lengthString(char string[]){
 /**
  * Takes a substring of the sourceString
  */
-void substring (char sourceString[],
-                int startIndex, int numChars,
+void substring (const char sourceString[],
+                int startIndex,
+                int numChars,
                 char resultString[]){
 
     int lastIndex = lengthString(sourceString) - 1;
@@ -88,7 +108,7 @@ void substring (char sourceString[],
 /**
  * Finds a piece of a string in another string. Returns its start index
  */
-int findString (char sourceString[], char searchString[]) {
+int findString (const char sourceString[], char searchString[]) {
 
     char foundString[100];
 
@@ -141,7 +161,7 @@ void removeString (char textString[],
  * Inserts bit at position given into text
  * If pos is out of bounds of textString then do nothing
  */
-void insertString (char textString[], char putString[], int pos)
+void insertString (char textString[], const char putString[], int pos)
 {
     if (pos >= 0 && pos <= lengthString(textString))
     {
@@ -182,8 +202,8 @@ void insertString (char textString[], char putString[], int pos)
  * Replaces first occurrence of target with replaceString
  */
 bool replaceString (char sourceString[],
-                    char targetString[],
-                    char replacerString[])
+                    const char targetString[],
+                    const char replacerString[])
 {
     int indexOfTarget = findString(sourceString, targetString);
 
@@ -204,8 +224,8 @@ bool replaceString (char sourceString[],
  * Replaces multiple occurrences
  */
 void replaceAll (char sourceString[],
-                 char targetString[],
-                 char replacerString[]) {
+                 const char targetString[],
+                 const char replacerString[]) {
 
     bool stillFound = true;
 
@@ -242,12 +262,52 @@ void concat(char result[], const char str1[], const char str2[]) {
 int toInteger(const char string[]){
 
     int intValue, result = 0;
+    int index = 0;
+    bool wasNegative = false;
 
-    for (int i = 0; string[i] >= '0' && string[i] <= '9'; i++){
+    if (string[0] == '-') {
+        wasNegative = true;
+        index = 1;
+    } else {
+        index = 0;
+    }
+
+    for (int i = index; string[i] >= '0' && string[i] <= '9'; i++){
         intValue = string[i] - '0';
         result = result * 10 + intValue;
     }
+
+    if (wasNegative) {
+        result *= -1;
+    }
+
     return result;
+}
+
+
+
+void toUppercase (char string[])
+{
+    for (int i = 0; i < lengthString(string); i++)
+    {
+        if (isAlphabetic(string[i]))
+        {
+            char letter = string[i] - 'a' + 'A';
+            string[i] = letter;
+        }
+    }
+}
+
+void toLowercase (char string[])
+{
+    for (int i = 0; i < lengthString(string); i++)
+    {
+        if (isAlphabetic(string[i]))
+        {
+            char letter = string[i] - 'A' + 'a';
+            string[i] = letter;
+        }
+    }
 }
 
 
@@ -301,7 +361,7 @@ int countWordsLine(const char line[]){
 
 
 
-int countWordsText(char text[]) {
+int countWordsText(/*const */char text[]) {
 
     int totalWords = 0;
     bool endOfText = false;

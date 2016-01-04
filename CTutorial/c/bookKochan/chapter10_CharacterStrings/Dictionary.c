@@ -98,7 +98,7 @@ int comparatorByWord (const void *a,
 
 void dictionarySort (struct Entry dict[], int numEntries)
 {
-    size_t dictLength = sizeof(dict) / sizeof(struct Entry);
+    size_t dictLength = numEntries; //sizeof(dict) / sizeof(struct Entry);
 
     qsort(dict,
           dictLength,
