@@ -125,21 +125,8 @@ void librarian (struct Entry dict[], char word[], int numEntries)
 
 int main(){
 
-/*    *//*const*//* struct Entry dictionaryOfEntries[100] =
-            {
-                    {"aardvark", "a burrowing African mammal"},
-                    {"abyss",    "a bottomless pit"},
-                    {"acumen",   "mentally sharp; keen"},
-                    {"addle",    "to become confused"},
-                    {"aerie",    "a high nest"},
-                    {"affix",    "to append; attach"},
-                    {"agar",     "a jelly made from seaweed"},
-                    {"ahoy",     "a nautical call of greeting"},
-                    {"aigrette", "an ornamental cluster of feathers"},
-                    {"ajar",     "partially opened"}
-            };*/
     //can hold 100 Entries; currently has 10
-    /*const*/ /*struct Entry dictionaryOfEntries[100] =
+    /*const*/ struct Entry dictionaryOfEntries[100] =
             {
                     {"aerie",    "a high nest"},
                     {"ajar",     "partially opened"},
@@ -166,8 +153,7 @@ int main(){
     dictionarySort(dictionaryOfEntries, numEntries);
     printf("\n\nAfter:\n");
     printDictionary(dictionaryOfEntries, numEntries);
-*/
-    //==========================================================================
+    /*//==========================================================================
     struct st_ex {
         char product[16];
         float price;
@@ -188,7 +174,7 @@ int main(){
     strcpy(dict[2].word, "bizarre");    strcpy(dict[2].definition, "very weird; out of the ordinary");
 
     size_t dict_len = sizeof(dict) / sizeof(struct Entry);
-    printf("\n%zu", dict_len);
+    printf("\n%zu", dict_len);*/
 
     return 0;
 }
