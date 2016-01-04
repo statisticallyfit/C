@@ -51,7 +51,7 @@ int lengthDict (struct Entry dict[]) {
 /**
  * Returns number of digits of largest word in the list
  */
-int maxWordLength(char wordList[], int numWords)
+int maxWordLength(int numWords, int numLetters, char wordList[][numLetters])
 {
     int maxLen = 0;
     for (int i = 0; i < numWords; i++)
@@ -66,21 +66,21 @@ int maxWordLength(char wordList[], int numWords)
     return maxLen;
 }
 
-
 void printDictionary (struct Entry dict[], int numEntries)
 {
     // put words of dict into array then find maxword
-    char words[numEntries][100]; // set 99 as max word length - a guess (last element is \0)
+    int numLetters = 100;
+    char words[numEntries][numLetters]; // set 99 as max word length - a guess (last element is \0)
 
     for (int i = 0; i < numEntries; i++) {
         strcpy(words[i], dict[i].word);
     }
-    int rightJustify = 4 + maxWordLength(words[numEntries], numEntries);
+    int rightJustify = 4 + maxWordLength(numEntries, numLetters, words);
 
     // now print
     for (int i = 0; i < numEntries; i++) {
-        printf("%s: ", dict[i].word);
-        printf("%*s.\n", rightJustify, dict[i].definition);
+        printf("%-*s: ", rightJustify, dict[i].word);
+        printf("%s.\n", dict[i].definition);
     }
 }
 
@@ -125,19 +125,32 @@ void librarian (struct Entry dict[], char word[], int numEntries)
 
 int main(){
 
-    //can hold 100 Entries; currently has 10
-    /*const*/ struct Entry dictionaryOfEntries[100] =
+/*    *//*const*//* struct Entry dictionaryOfEntries[100] =
             {
-                {"aardvark", "a burrowing African mammal"},
-                {"abyss",    "a bottomless pit"},
-                {"acumen",   "mentally sharp; keen"},
-                {"addle",    "to become confused"},
-                {"aerie",    "a high nest"},
-                {"affix",    "to append; attach"},
-                {"agar",     "a jelly made from seaweed"},
-                {"ahoy",     "a nautical call of greeting"},
-                {"aigrette", "an ornamental cluster of feathers"},
-                {"ajar",     "partially opened"}
+                    {"aardvark", "a burrowing African mammal"},
+                    {"abyss",    "a bottomless pit"},
+                    {"acumen",   "mentally sharp; keen"},
+                    {"addle",    "to become confused"},
+                    {"aerie",    "a high nest"},
+                    {"affix",    "to append; attach"},
+                    {"agar",     "a jelly made from seaweed"},
+                    {"ahoy",     "a nautical call of greeting"},
+                    {"aigrette", "an ornamental cluster of feathers"},
+                    {"ajar",     "partially opened"}
+            };*/
+    //can hold 100 Entries; currently has 10
+    /*const*/ /*struct Entry dictionaryOfEntries[100] =
+            {
+                    {"aerie",    "a high nest"},
+                    {"ajar",     "partially opened"},
+                    {"abyss",    "a bottomless pit"},
+                    {"affix",    "to append; attach"},
+                    {"addle",    "to become confused"},
+                    {"aigrette", "an ornamental cluster of feathers"},
+                    {"ahoy",     "a nautical call of greeting"},
+                    {"agar",     "a jelly made from seaweed"},
+                    {"aardvark", "a burrowing African mammal"},
+                    {"acumen",   "mentally sharp; keen"}
             };
     int numEntries = 10;
     //char word[10]; // to hold a word with 9 letters
@@ -147,8 +160,35 @@ int main(){
 
     // Testing =================================================================
 
-    printf("\n\n\nTEST: DICTIONARY SORT");
+    printf("\n\nTEST: DICTIONARY SORT");
+    printf("\n\nBefore:\n");
     printDictionary(dictionaryOfEntries, numEntries);
+    dictionarySort(dictionaryOfEntries, numEntries);
+    printf("\n\nAfter:\n");
+    printDictionary(dictionaryOfEntries, numEntries);
+*/
+    //==========================================================================
+    struct st_ex {
+        char product[16];
+        float price;
+    };
+
+    struct st_ex structArray[] = {{"mp3 player", 299.0f}, {"plasma tv", 2200.0f},
+                                  {"notebook",   1300.0f}, {"smartphone", 499.99f},
+                                  {"dvd player", 150.0f}, {"matches", 0.2f }};
+
+    size_t structs_len = sizeof(structArray) / sizeof(struct st_ex);
+    printf("\n%zu", structs_len);
+
+    //==========================================================================
+
+    struct Entry dict[10];
+    strcpy(dict[0].word, "benign");     strcpy(dict[0].definition, "harmless; a good thing");
+    strcpy(dict[1].word, "baffled");    strcpy(dict[1].definition, "completely confused");
+    strcpy(dict[2].word, "bizarre");    strcpy(dict[2].definition, "very weird; out of the ordinary");
+
+    size_t dict_len = sizeof(dict) / sizeof(struct Entry);
+    printf("\n%zu", dict_len);
 
     return 0;
 }
