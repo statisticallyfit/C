@@ -6,6 +6,6 @@ project(.)
 #   FOR C++ ==> set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -Wall")
 
-set(SOURCE_FILES c/bookKochan/chapter11_Pointers/LinkedListPointer.c
+set(SOURCE_FILES c/bookKochan/chapter11_Pointers/FunctionReturnPointer.c
         include/StringOp.h)
 add_executable(CTutorial ${SOURCE_FILES})
