@@ -12,7 +12,7 @@ bool equalStrings       (const char[], const char[]);
 int compareStrings      (const char[], const char[]);
 int lengthString        (const char[]);
 void substring          (const char[], int, int, char[]);
-int findString          (const char[], char[]);
+int findString          (const char[], const char[]);
 void removeString       (char[], int, int);
 void insertString       (char[], const char[], int);
 bool replaceString      (char[], const char[], const char[]);
@@ -108,7 +108,7 @@ void substring (const char sourceString[],
 /**
  * Finds a piece of a string in another string. Returns its start index
  */
-int findString (const char sourceString[], char searchString[]) {
+int findString (const char sourceString[], const char searchString[]) {
 
     char foundString[100];
 
