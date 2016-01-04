@@ -73,12 +73,12 @@ void printDictionary (struct Entry dict[], int numEntries)
     for (int i = 0; i < numEntries; i++) {
         strcpy(words[i], dict[i].word);
     }
-    int width = 4 + maxWordLength(words, numEntries);
+    int rightJustify = 4 + maxWordLength(words[numEntries], numEntries);
 
     // now print
     for (int i = 0; i < numEntries; i++) {
         printf("%s: ", dict[i].word);
-        printf("%*s.\n", width, dict[i].definition);
+        printf("%*s.\n", rightJustify, dict[i].definition);
     }
 }
 
