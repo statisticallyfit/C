@@ -9,14 +9,20 @@ struct Entry {
 };
 
 
+struct Entry *listPointer;
 
-void insertEntry(struct Entry insert, struct Entry after)
+
+/**
+ * Inserts @insert after the @after Entry
+ */
+void insertEntry(struct Entry insert,
+                 struct Entry after)
 {
     insert.next = after.next;
     after.next = &insert;
     //printf("After entry:", after.value);
     /*(*insert).next = (*after).next; //same as after->next
-    (*after).next = &insert;*/
+    (*after).next = &(*insert);*/
 }
 
 
@@ -36,7 +42,7 @@ int main() {
 
 
     struct Entry e1, e2, e4, e5;
-    struct Entry *listPointer;
+    //struct Entry *listPointer;
 
     listPointer = &e1;
 
@@ -50,8 +56,7 @@ int main() {
     e4.next = &e5;
 
     e5.value = 50;
-    e5.next = (struct Entry *) 0;
-
+    e5.next = NULL; //(struct Entry *) 0
 
     //insert entry
     struct Entry entryInsert;
