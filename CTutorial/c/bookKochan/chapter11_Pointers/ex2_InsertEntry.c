@@ -9,22 +9,44 @@ struct Entry {
 };
 
 
+struct Entry e1, e2, e4, e5;
 struct Entry *listPointer;
 
 
 /**
  * Inserts @insert after the @after Entry
  */
-void insertEntry(struct Entry insert,
-                 struct Entry after)
+void insertEntry(struct Entry *before,
+                 struct Entry *insert)
 {
-    insert.next = after.next;
-    after.next = &insert;
-    //printf("After entry:", after.value);
-    /*(*insert).next = (*after).next; //same as after->next
-    (*after).next = &(*insert);*/
+    /*if (before == listPointer) //if insert at head...
+    {
+        (*insert).next = before;
+        listPointer = insert;
+    }*/
+
+    (*insert).next = (*before).next; //same as before->next
+    (*before).next = insert;
 }
 
+
+/**
+ * Removes @remove which is after the before entry
+ */
+void removeEntry (struct Entry *before,
+                  struct Entry *remove)
+{
+    (*before).next = (*remove).next;
+}
+
+
+/**
+ * Removes head
+ */
+void removeHead()
+{
+    listPointer = (*listPointer).next;
+}
 
 void traverseLinkedList(struct Entry *listPointer)
 {
@@ -41,9 +63,11 @@ void traverseLinkedList(struct Entry *listPointer)
 int main() {
 
 
-    struct Entry e1, e2, e4, e5;
+    //struct Entry e1, e2, e4, e5;
     //struct Entry *listPointer;
 
+    /*(*listPointer).value = -1;
+    (*listPointer).next = e1.next;*/
     listPointer = &e1;
 
     e1.value = 10;
@@ -58,15 +82,43 @@ int main() {
     e5.value = 50;
     e5.next = NULL; //(struct Entry *) 0
 
-    //insert entry
-    struct Entry entryInsert;
+    //Exercise 2
+    struct Entry entryInsert; //initialize
     entryInsert.value = 30;
     entryInsert.next = (struct Entry *) 0;
 
+    // Insert after e2
     printf("\nBefore inserting:\n");
     traverseLinkedList(listPointer);
     printf("After inserting:\n");
-    insertEntry(entryInsert, e2);
+    insertEntry(&e2, &entryInsert);
+    traverseLinkedList(listPointer);
+
+    removeEntry(&e2, &entryInsert);
+
+    // Insert after end
+    printf("\n\nTAIL: Before inserting:\n");
+    traverseLinkedList(listPointer);
+    printf("After inserting:\n");
+    insertEntry(&e5, &entryInsert); //insert entry after e5
+    traverseLinkedList(listPointer);
+
+    removeEntry(&e5, &entryInsert);
+
+    // Iinsert after head
+    printf("\n\nAFTER HEAD: Before inserting:\n");
+    traverseLinkedList(listPointer);
+    printf("After inserting:\n");
+    insertEntry(&e1, &entryInsert);
+    traverseLinkedList(listPointer);
+
+    removeEntry(&e1, &entryInsert);
+
+    //Exercise 3: Insert at head
+    printf("\n\nAT HEAD: Before inserting:\n");
+    traverseLinkedList(listPointer);
+    printf("After inserting:\n");
+    insertEntry(&e1, &entryInsert);
     traverseLinkedList(listPointer);
 
     return 0;
