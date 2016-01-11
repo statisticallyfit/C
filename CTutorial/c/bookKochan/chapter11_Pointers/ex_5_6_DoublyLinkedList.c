@@ -49,7 +49,17 @@ void insert(struct Entry *before,
 /**
  * Removes the entry after the before entry
  */
-
+void erase (struct Entry *before,
+            struct Entry *erase)
+{
+    //if list pointer (which is e1) == erase
+    if (before == NULL) // then erase the head
+    {
+        
+    }
+    before->next = erase->next;
+    erase->next->past = before;
+}
 
 
 int main()
@@ -83,17 +93,21 @@ int main()
     entry.value =12345678;
     entry.past = entry.next = NULL;
 
-    /*printf("\nINSERT: Before:\n");
+    printf("\nINSERT: Before:\n");
     traverse(listPointer);
     printf("After:\n");
     insert(&e2, &entry); //insert so entry is third element
-    traverse(listPointer);*/
+    traverse(listPointer);
 
-    /*printf("\nHEAD: Before:\n");
+    erase(&e2, &entry);
+
+    printf("\nHEAD: Before:\n");
     traverse(listPointer);
     printf("After:\n");
     insert(NULL, &entry);
-    traverse(listPointer);*/
+    traverse(listPointer);
+
+    erase(NULL, &entry);
 
     printf("\nTAIL: Before:\n");
     traverse(listPointer);

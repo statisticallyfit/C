@@ -48,8 +48,8 @@
       <file leaf-file-name="ex_5_6_DoublyLinkedList.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/c/bookKochan/chapter11_Pointers/ex_5_6_DoublyLinkedList.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56806284">
-              <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.6308901">
+              <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -487,7 +487,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/c/bookKochan/chapter11_Pointers/ex_5_6_DoublyLinkedList.c</url>
-          <line>100</line>
+          <line>114</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
@@ -877,8 +877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/c/bookKochan/chapter11_Pointers/ex_5_6_DoublyLinkedList.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56806284">
-          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.6308901">
+          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
           <folding />
         </state>
       </provider>
