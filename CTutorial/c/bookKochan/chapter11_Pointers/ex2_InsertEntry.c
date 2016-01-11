@@ -9,8 +9,7 @@ struct Entry {
 };
 
 
-struct Entry e1, e2, e4, e5;
-struct Entry *listPointer;
+struct Entry *listPointer, *listStart;
 
 
 /**
@@ -19,11 +18,11 @@ struct Entry *listPointer;
 void insertEntry(struct Entry *before,
                  struct Entry *insert)
 {
-    /*if (before == listPointer) //if insert at head...
+    if (&before == &listPointer) //if insert at head...
     {
         (*insert).next = before;
         listPointer = insert;
-    }*/
+    }
 
     (*insert).next = (*before).next; //same as before->next
     (*before).next = insert;
@@ -63,11 +62,8 @@ void traverseLinkedList(struct Entry *listMarker)
 int main() {
 
 
-    //struct Entry e1, e2, e4, e5;
-    //struct Entry *listPointer;
+    struct Entry e1, e2, e4, e5;
 
-    /*(*listPointer).value = -1;
-    (*listPointer).next = e1.next;*/
     listPointer = &e1;
 
     e1.value = 10;
@@ -81,6 +77,7 @@ int main() {
 
     e5.value = 50;
     e5.next = NULL; //(struct Entry *) 0
+
 
     //Exercise 2
     struct Entry entryInsert; //initialize
@@ -105,7 +102,7 @@ int main() {
 
     removeEntry(&e5, &entryInsert);
 
-    // Iinsert after head
+    // Insert after head
     printf("\n\nAFTER HEAD: Before inserting:\n");
     traverseLinkedList(listPointer);
     printf("After inserting:\n");

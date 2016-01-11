@@ -44,8 +44,8 @@ bool equalStrings(const char s1[], const char s2[]) {
 
 
 
-/** Returns -1 if first word is before the second
- * Returns 1 if first word is after second
+/** Returns -1 if first word is previous the second
+ * Returns 1 if first word is next second
  * Returns 0 if they are the same
  */
 int compareStrings (const char s1[], const char s2[]){
@@ -145,7 +145,7 @@ void removeString (char textString[],
         stopIndex = startIndex + numChars - 1;
     }
 
-    // Copy over stuff after stopIndex over the bit to remove
+    // Copy over stuff next stopIndex over the bit to remove
     // and clean remainder with \0
     for (int i = stopIndex + 1; i <= lastIndex; i++)
     {
@@ -181,7 +181,7 @@ void insertString (char textString[], const char putString[], int pos)
             textString[i] = putString[j];
         }
 
-        // put in the saved bit after
+        // put in the saved bit next
         int zeroFillStartIndex = 0;
         for (int i = pos + lengthString(putString), j = 0; i < lengthString(textString) + lengthString(putString); i++, j++){
             textString[i] = rememberString[j];
@@ -336,8 +336,8 @@ bool isAlphabetic(const char c) {
 
 /**
  * Exercise 3: fixing function to not count a new word
- * after a word that contains an apostrophe.
- * If there is space around the apostrophe, the (letter) after apostrophe will count as new word
+ * next a word that contains an apostrophe.
+ * If there is space around the apostrophe, the (letter) next apostrophe will count as new word
  */
 int countWordsLine(const char line[]){
 
