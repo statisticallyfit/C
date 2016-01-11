@@ -29,7 +29,7 @@ void insert(struct Entry *before,
 {
     if (before == NULL) // assume we want to insert at head
     {
-        insert->past = listPointer;
+        insert->past = NULL; //to make this identifiable as head or set to listPtr
         insert->next = listPointer; //is really e1
         listPointer = insert;
     } else  // if at tail
@@ -53,12 +53,18 @@ void erase (struct Entry *before,
             struct Entry *erase)
 {
     //if list pointer (which is e1) == erase
-    if (before == NULL) // then erase the head
+    if (erase->past == NULL) // then erase the head
     {
-        
+        listPointer = erase->next; // since erase is the first one
+        erase->next->past = NULL;
+    } else
+    {
+        before->next = erase->next;
+
+        if (erase->next != NULL) { // if not at tail{
+            erase->next->past = before;
+        }
     }
-    before->next = erase->next;
-    erase->next->past = before;
 }
 
 
@@ -69,7 +75,7 @@ int main()
     listPointer = &e1;
 
     e1.value = 10;
-    e1.past = listPointer;
+    e1.past = NULL;
     e1.next = &e2;
 
     e2.value = 20;
@@ -113,6 +119,10 @@ int main()
     traverse(listPointer);
     printf("After:\n");
     insert(&e5, &entry);
+    traverse(listPointer);
+
+    erase(&e5, &entry);
+    printf("\n");
     traverse(listPointer);
 
     return 0;

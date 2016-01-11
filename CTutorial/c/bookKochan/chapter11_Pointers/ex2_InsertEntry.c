@@ -84,43 +84,45 @@ int main() {
 
 
     //Exercise 2
-    struct Entry anEntry; //initialize
-    anEntry.value = 12345678;
-    anEntry.next = (struct Entry *) 0;
+    struct Entry entry; //initialize
+    entry.value = 12345678;
+    entry.next = (struct Entry *) 0;
 
     // Insert after e2
     printf("\nBefore inserting:\n");
     traverse(listPointer);
     printf("After inserting:\n");
-    insert(&e2, &anEntry);
+    insert(&e2, &entry);
     traverse(listPointer);
 
-    erase(&e2, &anEntry);
+    erase(&e2, &entry);
 
     // Insert after end
     printf("\n\nTAIL: Before inserting:\n");
     traverse(listPointer);
     printf("After inserting:\n");
-    insert(&e5, &anEntry); //insert entry after e5
+    insert(&e5, &entry); //insert entry after e5
     traverse(listPointer);
 
-    erase(&e5, &anEntry);
+    erase(&e5, &entry);
 
     // Insert after head
     printf("\n\nAFTER HEAD: Before inserting:\n");
     traverse(listPointer);
     printf("After inserting:\n");
-    insert(&e1, &anEntry);
+    insert(&e1, &entry);
     traverse(listPointer);
 
-    erase(&e1, &anEntry);
+    erase(&e1, &entry);
 
     //Exercise 3: Insert at head
     printf("\n\nHEAD: Before inserting:\n");
     traverse(listPointer);
     printf("After inserting:\n");
-    insert(NULL, &anEntry);
+    insert(NULL, &entry);
     traverse(listPointer);
+
+    //erase(NULL, &entry);
 
     return 0;
 }

@@ -7,6 +7,7 @@ int arraySum1(int array[], const int arrayLength) {
     int *const arrayEnd = array + arrayLength;
 
     for (pointer = array; pointer < arrayEnd; pointer++){
+        printf("%i %i\n", *pointer, *array);
         sum += *pointer;
     }
     return sum;
