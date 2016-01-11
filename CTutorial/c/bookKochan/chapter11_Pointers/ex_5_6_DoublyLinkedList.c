@@ -3,14 +3,14 @@
 
 struct Entry {
     int value;
-    struct Entry *previous;
+    struct Entry *past;
     struct Entry *next;
 };
 
 struct Entry *listPointer;
 
 
-void traverseDoublyLinkedList(struct Entry *listTraverser)
+void traverse(struct Entry *listTraverser)
 {
     while (listTraverser != NULL)
     {
@@ -24,65 +24,82 @@ void traverseDoublyLinkedList(struct Entry *listTraverser)
 /**
  * Inserts @insert after the @after Entry
  */
-void insertEntry(struct Entry *location,
-                 struct Entry *entry)
+void insert(struct Entry *before,
+            struct Entry *insert)
 {
-    /*if (before == listPointer) //if insert at head...
+    if (before == NULL) // assume we want to insert at head
     {
-        (*insert).next = before;
+        insert->past = listPointer;
+        insert->next = listPointer; //is really e1
         listPointer = insert;
-    }*/
-    entry->next = location;
-    entry->previous = (*location).previous;
+    } else  // if at tail
+    {
+        insert->past = before;
+        insert->next = before->next;
 
-    entry->previous->next = entry;
-    entry->next->previous = entry;
+        if (before->next != NULL){ //if meant to insert at tail
+            before->next = insert;
+            insert->next->past = insert;
+        }
+        before->next = insert;
+    }
 }
 
 
+/**
+ * Removes the entry after the before entry
+ */
 
-int main() {
 
+
+int main()
+{
     struct Entry e1, e2, e3, e4, e5;
 
     listPointer = &e1;
 
     e1.value = 10;
-    e1.previous = listPointer;
+    e1.past = listPointer;
     e1.next = &e2;
 
     e2.value = 20;
-    e2.previous = &e1;
+    e2.past = &e1;
     e2.next = &e3;
 
     e3.value = 30;
-    e3.previous = &e2;
+    e3.past = &e2;
     e3.next = &e4;
 
     e4.value = 40;
-    e4.previous = &e3;
+    e4.past = &e3;
     e4.next = &e5;
 
     e5.value = 50;
-    e5.previous = &e4;
+    e5.past = &e4;
     e5.next = NULL;
 
 
-    struct Entry entryToInsert;
-    entryToInsert.value =12345678;
-    entryToInsert.previous = entryToInsert.next = NULL;
+    struct Entry entry;
+    entry.value =12345678;
+    entry.past = entry.next = NULL;
 
     /*printf("\nINSERT: Before:\n");
-    traverseDoublyLinkedList(listPointer);
+    traverse(listPointer);
     printf("After:\n");
-    insertEntry(&e2, &entryToInsert);
-    traverseDoublyLinkedList(listPointer);*/
+    insert(&e2, &entry); //insert so entry is third element
+    traverse(listPointer);*/
 
-    printf("\nHEAD: Before:\n");
-    traverseDoublyLinkedList(listPointer);
+    /*printf("\nHEAD: Before:\n");
+    traverse(listPointer);
     printf("After:\n");
-    insertEntry(&e1, &entryToInsert);
-    traverseDoublyLinkedList(listPointer);
+    insert(NULL, &entry);
+    traverse(listPointer);*/
+
+    printf("\nTAIL: Before:\n");
+    traverse(listPointer);
+    printf("After:\n");
+    insert(&e5, &entry);
+    traverse(listPointer);
 
     return 0;
 }

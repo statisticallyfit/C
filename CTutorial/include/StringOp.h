@@ -44,7 +44,7 @@ bool equalStrings(const char s1[], const char s2[]) {
 
 
 
-/** Returns -1 if first word is previous the second
+/** Returns -1 if first word is past the second
  * Returns 1 if first word is next second
  * Returns 0 if they are the same
  */
@@ -138,14 +138,14 @@ void removeString (char textString[],
     startIndex = (startIndex < 0) ? 0 : startIndex;
     int stopIndex = 0;
 
-    // Getting the bound Indexes of the bit to remove
+    // Getting the bound Indexes of the bit to pop
     if (startIndex + numChars - 1 > lastIndex) {
         stopIndex = lastIndex;
     } else {
         stopIndex = startIndex + numChars - 1;
     }
 
-    // Copy over stuff next stopIndex over the bit to remove
+    // Copy over stuff next stopIndex over the bit to pop
     // and clean remainder with \0
     for (int i = stopIndex + 1; i <= lastIndex; i++)
     {
