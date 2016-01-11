@@ -48,13 +48,13 @@ void removeHead()
     listPointer = (*listPointer).next;
 }
 
-void traverseLinkedList(struct Entry *listPointer)
+void traverseLinkedList(struct Entry *listMarker)
 {
     struct Entry *nullPointer = (struct Entry *) 0;
-    while (listPointer != nullPointer)
+    while (listMarker != nullPointer)
     {
-        printf("%i\n", listPointer->value);
-        listPointer = listPointer->next;
+        printf("%i\n", listMarker->value);
+        listMarker = listMarker->next;
     }
 }
 
@@ -115,10 +115,10 @@ int main() {
     removeEntry(&e1, &entryInsert);
 
     //Exercise 3: Insert at head
-    printf("\n\nAT HEAD: Before inserting:\n");
+    printf("\n\nHEAD: Before inserting:\n");
     traverseLinkedList(listPointer);
     printf("After inserting:\n");
-    insertEntry(&e1, &entryInsert);
+    insertEntry(listPointer, &entryInsert);
     traverseLinkedList(listPointer);
 
     return 0;
