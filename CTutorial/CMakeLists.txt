@@ -6,6 +6,6 @@ project(.)
 #   FOR C++ ==> set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -Wall")
 
-set(SOURCE_FILES c/bookKochan/chapter11_Pointers/ex12_Output.c
+set(SOURCE_FILES c/bookKochan/chapter11_Pointers/ex2_InsertEntry.c
         include/StringOp.h)
 add_executable(CTutorial ${SOURCE_FILES})
